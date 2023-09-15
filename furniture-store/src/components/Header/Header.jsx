@@ -20,7 +20,6 @@ export const Header = () => {
 						</li>
 						<li><Link className="nav-link" to="/shop">Shop</Link></li>
 						<li><Link className="nav-link" to="/about-us">About us</Link></li>
-						<li><Link className="nav-link" to="/services">Services</Link></li>
 						<li><Link className="nav-link" to="/blog">Blog</Link></li>
 						<li><Link className="nav-link" to="/contact-us">Contact us</Link></li>
 					</ul>
