@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export const Header = () => {
     
+	const {onLogout} = useAuthContext();
+
     return (
 
         <nav className="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
@@ -26,13 +30,13 @@ export const Header = () => {
 
 					<ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 						<div id="user">
-					    <li><Link className="nav-link" to="/logout">Logout</Link></li>
+					    <li><Link className="nav-link" onClick={onLogout} to="/logout">Logout</Link></li>
 						</div>
 						<div id="guest">
 					    <li><Link className="nav-link" to="/login">Login</Link></li>
 						<li><Link className="nav-link" to="/register">Register</Link></li>
 						</div>
-						<li><a className="nav-link" href="cart.html"><img src="images/cart.svg"/></a></li>
+						<li><Link className="nav-link" to="/cart"><img src="images/cart.svg"/></Link></li>
 					</ul>
 				</div>
 			</div>

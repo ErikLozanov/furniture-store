@@ -1,4 +1,16 @@
+import { useAuthContext } from "../../contexts/AuthContext";
+import { useForm } from "../../hooks/useForm";
+
+
+
 export const Register = () => {
+
+  const {onRegisterSubmit} = useAuthContext();
+  const { values, changeHandler , onSubmit} = useForm({
+    email: '',
+    password: '',
+    confirmPassword: '',
+  }, onRegisterSubmit);
 
 
     return(
@@ -16,12 +28,17 @@ export const Register = () => {
                     <p className="text-white-50 mb-5">
                       Sign up here!
                     </p>
+                    <form onSubmit={onSubmit}>
+
                     <div className="form-outline form-white mb-4">
                       <input
                         type="email"
                         id="typeEmailX"
                         className="form-control form-control-lg"
-                      />
+                        name="email"
+                        value={values.email}
+                        onChange={changeHandler}
+                        />
                       <label className="form-label" htmlFor="typeEmailX">
                         Email
                       </label>
@@ -31,7 +48,10 @@ export const Register = () => {
                         type="password"
                         id="typePasswordX"
                         className="form-control form-control-lg"
-                      />
+                        name="password"
+                        value={values.password}
+                        onChange={changeHandler}
+                        />
                       <label className="form-label" htmlFor="typePasswordX">
                         Password
                       </label>
@@ -39,9 +59,12 @@ export const Register = () => {
                     <div className="form-outline form-white mb-4">
                       <input
                         type="password"
-                        id="typePasswordX"
+                        id="typeConfirmPasswordX"
                         className="form-control form-control-lg"
-                      />
+                        name="confirmPassword"
+                        value={values.confirmPassword}
+                        onChange={changeHandler}
+                        />
                       <label className="form-label" htmlFor="typePasswordX">
                         Confirm Password
                       </label>
@@ -49,9 +72,10 @@ export const Register = () => {
                     <button
                       className="btn btn-outline-light btn-lg px-5"
                       type="submit"
-                    >
+                      >
                       Register
                     </button>
+                      </form>
                   </div>
                   <div>
                     <p className="mb-0">

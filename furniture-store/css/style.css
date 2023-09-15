@@ -729,10 +729,20 @@ textarea {
   display: flex;
 }
 
+.col-md-7 {
+  width: 600px;
+}
+
+
 
 
 .gradient-custom {
   /* fallback for old browsers */
   background: honeydew;
 
-  }
+}
+
+
+
+
+

@@ -1,4 +1,17 @@
+import { useForm } from "../../hooks/useForm";
+import {auth} from '../../firebase-config';
+import {} from 'firebase/auth';
+import { useAuthContext } from "../../contexts/AuthContext";
+
+
 export const Login = () => {
+
+
+      const {onLoginSubmit} = useAuthContext();
+      const { values, changeHandler , onSubmit} = useForm({
+        email: '',
+        password: '',
+      }, onLoginSubmit);
 
     return (
       <section className="vh-100 gradient-custom">
@@ -15,12 +28,17 @@ export const Login = () => {
                   <p className="text-white-50 mb-5">
                     Please enter your login and password!
                   </p>
+                  <form onSubmit={onSubmit}>
+
                   <div className="form-outline form-white mb-4">
                     <input
                       type="email"
                       id="typeEmailX"
                       className="form-control form-control-lg"
-                    />
+                      name="email"
+                      value={values.email}
+                      onChange={changeHandler}
+                      />
                     <label className="form-label" htmlFor="typeEmailX">
                       Email
                     </label>
@@ -30,7 +48,10 @@ export const Login = () => {
                       type="password"
                       id="typePasswordX"
                       className="form-control form-control-lg"
-                    />
+                      name="password"
+                      value={values.password}
+                      onChange={changeHandler}
+                      />
                     <label className="form-label" htmlFor="typePasswordX">
                       Password
                     </label>
@@ -38,9 +59,10 @@ export const Login = () => {
                   <button
                     className="btn btn-outline-light btn-lg px-5"
                     type="submit"
-                  >
+                    >
                     Login
                   </button>
+                    </form>
                 </div>
                 <div>
                   <p className="mb-0">
