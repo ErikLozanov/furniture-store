@@ -1,14 +1,21 @@
-import { Header } from "./components/Header/Header"
-import { Home } from "./components/Home/Home"
-
+import { Footer } from "./components/Footer/Footer";
+import { Header } from "./components/Header/Header";
+import { Home } from "./components/Home/Home";
+import { Routes,Route } from "react-router-dom";
+import { Shop } from "./components/Shop/Shop";
+import { About } from "./components/About/About";
 function App() {
 
   return (
     <>
-     <Header />
-
-     <Home />
-     </>
+      <Header />
+    <Routes>
+    <Route path='/' element={<Home />}/>
+    <Route path='/shop' element={<Shop/>}/>
+    <Route path='/about-us' element={<About/>}/>
+    </Routes>
+     <Footer />
+    </>
   )
 }
 

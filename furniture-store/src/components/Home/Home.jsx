@@ -1,10 +1,14 @@
-import { Hero } from "./Hero/Hero"
+import { BlogSection } from "./BlogSection/BlogSection"
+import { HeroSection } from "./HeroSection/Hero"
+import { ProductSection } from "./ProductSection/ProductSection"
 
 export const Home = () => {
 
     return (
         <>
-        <Hero />
+        <HeroSection />
+        <ProductSection />
+        <BlogSection />
         </>
     )
 }
