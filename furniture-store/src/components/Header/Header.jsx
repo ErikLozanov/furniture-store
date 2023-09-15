@@ -25,7 +25,13 @@ export const Header = () => {
 					</ul>
 
 					<ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a className="nav-link" href="#"><img src="images/user.svg"/></a></li>
+						<div id="user">
+					    <li><Link className="nav-link" to="/logout">Logout</Link></li>
+						</div>
+						<div id="guest">
+					    <li><Link className="nav-link" to="/login">Login</Link></li>
+						<li><Link className="nav-link" to="/register">Register</Link></li>
+						</div>
 						<li><a className="nav-link" href="cart.html"><img src="images/cart.svg"/></a></li>
 					</ul>
 				</div>

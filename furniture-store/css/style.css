@@ -724,3 +724,15 @@ textarea {
 .shop-hero-img {
   width: 400px;
 }
+
+#guest {
+  display: flex;
+}
+
+
+
+.gradient-custom {
+  /* fallback for old browsers */
+  background: honeydew;
+
+  }
