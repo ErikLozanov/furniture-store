@@ -59,7 +59,7 @@ export const AuthProvider = ({
         userId: authenticate._id,
         token: authenticate.accessToken,
         userEmail: authenticate.email,
-        isauthenticateenticated: !!authenticate.accessToken,
+        isAuthenticated: !!authenticate.accessToken,
     };
 
     return (
