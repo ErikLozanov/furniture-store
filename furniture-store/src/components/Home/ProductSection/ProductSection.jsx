@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 export const ProductSection = () => {
 
@@ -14,9 +15,9 @@ export const ProductSection = () => {
           Aliquam vulputate velit imperdiet dolor tempor tristique.{" "}
         </p>
         <p>
-          <a href="shop.html" className="btn">
-            Explore
-          </a>
+          <Link to="/about-us" className="btn">
+            About Us
+          </Link>
         </p>
       </div>
       {/* End Column 1 */}

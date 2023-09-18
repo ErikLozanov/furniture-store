@@ -17,7 +17,6 @@ export const AuthProvider = ({
     const onLoginSubmit = async (data) => {
         try {
             const result = await signInWithEmailAndPassword(auth, data.email, data.password);
-            console.log(result);
              setAuthenticate({accessToken: result.user.accessToken, _id: result.user.uid, email: result.user.email});
             navigate('/');
         } catch (error) {
@@ -58,6 +57,7 @@ export const AuthProvider = ({
         userEmail: authenticate.email,
         isAuthenticated: !!authenticate.accessToken,
     };
+
 
     return (
         <>

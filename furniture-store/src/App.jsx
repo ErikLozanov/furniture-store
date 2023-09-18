@@ -13,7 +13,20 @@ import { Cart } from "./components/Cart/Cart";
 
 import { AuthProvider } from "./contexts/AuthContext";
 
+import {set, ref} from "firebase/database";
+import {db} from "./firebase-config";
+
 function App() {
+  const writeToDb = (id,title,imageUrl,description) => {
+    set(ref(db, `/furnitures/${id}`),{
+      title,
+      imageUrl,
+      description
+    })
+    
+  }
+
+  writeToDb("4","Chair", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-kdNx1kFfAWBYf9by6_z-i9Irb-J1wR6_G5ypDqwPXA&s", 'Very good Chair!')
 
   return (
     <AuthProvider>
