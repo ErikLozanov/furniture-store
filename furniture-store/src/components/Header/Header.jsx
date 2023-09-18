@@ -4,7 +4,7 @@ import { useAuthContext } from "../../contexts/AuthContext";
 
 export const Header = () => {
     
-	const {onLogout, isAuthenticated} = useAuthContext();
+	const {onLogout, isAuthenticated, userEmail} = useAuthContext();
 
     return (
 
@@ -30,12 +30,13 @@ export const Header = () => {
 
 					<ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 						{isAuthenticated ? (<div id="user">
-					    <li><Link className="nav-link" onClick={onLogout} to="/logout">Logout</Link></li>
+					    <li><Link className="nav-link" onClick={onLogout} to="#">Logout</Link></li>
 						</div>) : (<div id="guest">
 					    <li><Link className="nav-link" to="/login">Login</Link></li>
 						<li><Link className="nav-link" to="/register">Register</Link></li>
 						</div>)}
 						<li><Link className="nav-link" to="/cart"><img src="images/cart.svg"/></Link></li>
+						{isAuthenticated && (<span className="nav-link">Hello, {userEmail}!</span>)}
 					</ul>
 				</div>
 			</div>

@@ -11,15 +11,14 @@ export const AuthContext = createContext();
 export const AuthProvider = ({
     children,
 }) => {
-    const [authenticate, setAuthenticate] = useLocalStorage('authenticate', {});
+    const [authenticate, setAuthenticate] = useState({});
     const navigate = useNavigate();
 
     const onLoginSubmit = async (data) => {
         try {
             const result = await signInWithEmailAndPassword(auth, data.email, data.password);
-
-            setAuthenticate(result);
-
+            console.log(result);
+             setAuthenticate({accessToken: result.user.accessToken, _id: result.user.uid, email: result.user.email});
             navigate('/');
         } catch (error) {
             console.log('There is a problem');
@@ -35,7 +34,7 @@ export const AuthProvider = ({
         try {
             const result = await createUserWithEmailAndPassword(auth, values.email, values.password);
 
-            setAuthenticate(result);
+            setAuthenticate({accessToken: result.user.accessToken, _id: result.user.uid, email: result.user.email});
 
             navigate('/');
         } catch (error) {
@@ -46,9 +45,7 @@ export const AuthProvider = ({
     const onLogout = async () => {
 
         await signOut(auth);
-
         setAuthenticate({});
-
         navigate('/');
     };
 

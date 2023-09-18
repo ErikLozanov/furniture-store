@@ -8,6 +8,8 @@ export const useLocalStorage = (key, initialValue) => {
             const persistedState = JSON.parse(persistedStateSerialized);
 
            return persistedState;
+        } else {
+            localStorage.clear();
         }
 
         return initialValue;
