@@ -3,12 +3,12 @@ import { BlogSection } from "./BlogSection/BlogSection"
 import { HeroSection } from "./HeroSection/Hero"
 import { ProductSection } from "./ProductSection/ProductSection"
 
-export const Home = () => {
+export const Home = ({furnitures}) => {
 
     return (
         <>
         <HeroSection />
-        <ProductSection />
+        <ProductSection furnitures={furnitures}/>
         <BlogSection />
         </>
     )

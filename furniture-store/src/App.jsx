@@ -12,15 +12,25 @@ import { Register } from "./components/Register/Register";
 import { Cart } from "./components/Cart/Cart";
 
 import { AuthProvider } from "./contexts/AuthContext";
+import { useEffect, useState } from "react";
+import { furnitureServiceFactory } from "./services/furnitureService";
 
 
 function App() {
+
+  const [furnitures, setFurnitures] = useState([]);
+  const furnitureService = furnitureServiceFactory();
+
+  useEffect(() => {
+    furnitureService.getAll()
+    .then(result => {setFurnitures(result)})
+  }, []);
 
   return (
     <AuthProvider>
       <Header />
     <Routes>
-    <Route path='/' element={<Home />}/>
+    <Route path='/' element={<Home furnitures={furnitures} />}/>
     <Route path='/shop' element={<Shop/>}/>
     <Route path='/about-us' element={<About/>}/>
     <Route path='/blog' element={<Blog/>}/>

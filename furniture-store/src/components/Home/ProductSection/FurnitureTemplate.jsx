@@ -1,7 +1,7 @@
 export const FurnitureTemplate = (furniture) => {
     
-    return (      
-    <div className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+    return (    
+    <div key={furniture._id} className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
     <a className="product-item" href="cart.html">
       <img
         src={furniture.imgSrc}
