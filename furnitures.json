@@ -1,0 +1,104 @@
+[
+    {
+        "name" : "Comfy Armchair",
+        "category" : "Chair",
+        "price" : "50.25",
+        "imgSrc" : "https://www.woods-furniture.co.uk/images/products/standard/9870_23581.jpg"
+    },
+    {
+        "name" : "Bed",
+        "category" : "Bed",
+        "price" : "102.00",
+        "imgSrc" : "https://m.media-amazon.com/images/I/61GnO+UavZL._AC_UF894,1000_QL80_DpWeblab_.jpg"
+    },
+    {
+        "name" : "Bench",
+        "category" : "Bench",
+        "price" : "15.00",
+        "imgSrc" : "https://www.lazysusanfurniture.co.uk/media/image/d0/42/7c/Rose-Bench-AB-Garden_flowers_Green_5star_compressedUFy8wH7kCtZ0U_600x600.jpg"
+    },
+    {
+        "name" : "Bunk bed",
+        "category" : "Bed",
+        "price" : "23.75",
+        "imgSrc" : "https://www.reinforcedbeds.co.uk/cdn/shop/products/HeavyDutyBunkBedPlus_0003_OakLeft_49f4c411-c4d0-4eb0-a3a3-75bf9cd6e70a.jpg?v=1619602143"
+    },
+    {
+        "name" : "Cabinet",
+        "category" : "Cabinet",
+        "price" : "50.00",
+        "imgSrc" : "https://secure.img1-cg.wfcdn.com/im/97985296/resize-h310-w310%5Ecompr-r85/1379/137960885/coridon-33-tall-2-door-accent-cabinet.jpg"
+    },
+    {
+        "name" : "Card table",
+        "category" : "Table",
+        "price" : "200.50",
+        "imgSrc" : "https://i5.walmartimages.com/seo/Flash-Furniture-Black-Folding-Card-Table-Lightweight-Portable-Folding-Table-with-Collapsible-Legs_caeba416-662e-4441-99e5-79f44118eb14.9bcb8092ce77592c7890ad01c173633a.jpeg"
+    },
+    {
+        "name" : "Cushion",
+        "category" : "Cushion",
+        "price" : "5.50",
+        "imgSrc" : "https://www.ikea.com/us/en/images/products/kransborre-cushion-light-pink__1009749_pe827722_s5.jpg"
+    },
+    {
+        "name" : "Desk",
+        "category" : "Desk",
+        "price" : "25.00",
+        "imgSrc" : "https://assets.wfcdn.com/im/70268433/compr-r85/1697/169728879/anoka-4303-desk.jpg"
+    },
+    {
+        "name" : "Drawer",
+        "category" : "Drawer",
+        "price" : "49.00",
+        "imgSrc" : "https://www.ikea.com/us/en/images/products/koppang-5-drawer-chest-white__0778087_pe758831_s5.jpg"
+    },
+    {
+        "name" : "Office chair",
+        "category" : "Chair",
+        "price" : "60.99",
+        "imgSrc" : "https://m.media-amazon.com/images/I/61wlmkVQsgL._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+        "name" : "Scissors chair",
+        "category" : "Chair",
+        "price" : "69.20",
+        "imgSrc" : "https://www.geigerfurniture.com/content/dam/ggrcom/page_assets/products/scissor_chair/ggr_th_scissor_chair_lounge_seating_hv.jpg.rendition.480.480.jpg"
+    },
+    {
+        "name" : "Sleeper sofa",
+        "category" : "Sofa",
+        "price" : "224.99",
+        "imgSrc" : "https://assets.wfcdn.com/im/11595295/compr-r85/1917/191722791/sleeper-sofa.jpg"
+    },
+    {
+        "name" : "Sleigh bed",
+        "category" : "Bed",
+        "price" : "90.25",
+        "imgSrc" : "https://m.media-amazon.com/images/I/71zorktMD7L.jpg"
+    },
+    {
+        "name" : "Sofa bed",
+        "category" : "Bed",
+        "price" : "99.99",
+        "imgSrc" : "https://m.media-amazon.com/images/I/8159OsGRaVL.jpg"
+    },
+    {
+        "name" : "White armchair",
+        "category" : "Chair",
+        "price" : "75.80",
+        "imgSrc" : "images/white-armchair.png"
+    },
+    {
+        "name" : "White sofa",
+        "category" : "Sofa",
+        "price" : "159.00",
+        "imgSrc" : "https://www.daals.co.uk/cdn/shop/products/b1efaecc-6582-423b-9b81-2dce84b2eb8a_600x.png?v=1621982343"
+    },
+    {
+        "name" : "Wing chair",
+        "category" : "Chair",
+        "price" : "100.50",
+        "imgSrc" : "https://m.media-amazon.com/images/I/61xInDw-HCL.jpg"
+    }
+]

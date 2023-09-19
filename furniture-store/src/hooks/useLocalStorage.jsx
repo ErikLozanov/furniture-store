@@ -8,17 +8,15 @@ export const useLocalStorage = (key, initialValue) => {
             const persistedState = JSON.parse(persistedStateSerialized);
 
            return persistedState;
-        } else {
-            localStorage.clear();
         }
 
         return initialValue;
     });
 
     const setLocalStorageState = (value) => {
-        setState(value.user);
+        setState(value);
 
-        localStorage.setItem(key, JSON.stringify(value.user));
+        localStorage.setItem(key, JSON.stringify(value));
     };
 
     return [

@@ -2,22 +2,24 @@ import { createContext, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
-
-import {createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword} from 'firebase/auth';
-import {auth} from '../firebase-config';
+import { authServiceFactory } from '../services/authService';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({
     children,
 }) => {
-    const [authenticate, setAuthenticate] = useState({});
+    const [auth, setAuth] = useLocalStorage('auth', {});
     const navigate = useNavigate();
+
+    const authService = authServiceFactory(auth.accessToken)
 
     const onLoginSubmit = async (data) => {
         try {
-            const result = await signInWithEmailAndPassword(auth, data.email, data.password);
-             setAuthenticate({accessToken: result.user.accessToken, _id: result.user.uid, email: result.user.email});
+            const result = await authService.login(data);
+
+            setAuth(result);
+
             navigate('/');
         } catch (error) {
             console.log('There is a problem');
@@ -31,9 +33,9 @@ export const AuthProvider = ({
         }
 
         try {
-            const result = await createUserWithEmailAndPassword(auth, values.email, values.password);
+            const result = await authService.register(registerData);
 
-            setAuthenticate({accessToken: result.user.accessToken, _id: result.user.uid, email: result.user.email});
+            setAuth(result);
 
             navigate('/');
         } catch (error) {
@@ -42,22 +44,20 @@ export const AuthProvider = ({
     };
 
     const onLogout = async () => {
+        await authService.logout();
 
-        await signOut(auth);
-        setAuthenticate({});
-        navigate('/');
+        setAuth({});
     };
 
     const contextValues = {
         onLoginSubmit,
         onRegisterSubmit,
         onLogout,
-        userId: authenticate._id,
-        token: authenticate.accessToken,
-        userEmail: authenticate.email,
-        isAuthenticated: !!authenticate.accessToken,
+        userId: auth._id,
+        token: auth.accessToken,
+        userEmail: auth.email,
+        isAuthenticated: !!auth.accessToken,
     };
-
 
     return (
         <>
