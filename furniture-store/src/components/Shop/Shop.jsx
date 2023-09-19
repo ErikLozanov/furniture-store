@@ -2,13 +2,13 @@ import { HeroSection } from "./HeroSection/HeroSection"
 import { ShopProductSection } from "./ShopProductSection/ShopProductSection"
 
 
-export const Shop = () => {
+export const Shop = ({furnitures}) => {
 
 
     return (
         <>
         <HeroSection />
-        <ShopProductSection />
+        <ShopProductSection furnitures={furnitures}/>
         </>
     )
 }

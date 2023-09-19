@@ -31,7 +31,7 @@ function App() {
       <Header />
     <Routes>
     <Route path='/' element={<Home furnitures={furnitures} />}/>
-    <Route path='/shop' element={<Shop/>}/>
+    <Route path='/shop' element={<Shop furnitures={furnitures}/>}/>
     <Route path='/about-us' element={<About/>}/>
     <Route path='/blog' element={<Blog/>}/>
     <Route path='/contact-us' element={<Contact/>}/>
