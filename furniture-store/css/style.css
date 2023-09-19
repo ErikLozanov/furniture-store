@@ -752,7 +752,7 @@ textarea {
 
 .product-details {
   display: flex;
-  gap: 50px;
+  gap: 150px;
   background-color: #ffffff;
   padding: 70px;
   border: 2px solid white;
@@ -761,6 +761,31 @@ textarea {
  
 .product-details img{
   width: 500px;
+}
+
+.product-info{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  width: 500px;
+}
+
+.buttons {
+  margin-top: 50px;
+  display: flex;
+  gap: 30px;
+}
+
+.buttons button {
+  padding: 15px 30px;
+  border-radius: 6px;
+}
+
+.buttons button:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+  background-color: rgb(75, 167, 75);
 }
 
 

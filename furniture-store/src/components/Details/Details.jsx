@@ -18,8 +18,13 @@ export const Details = () => {
 
             <img src={furniture.imgSrc} alt="" />
             <div className="product-info">
-            <p>{furniture.name}</p>
-            <p>{furniture.price}</p>
+            <h1>{furniture.name}</h1>
+            <h3>Price: ${furniture.price}</h3>
+            <p>{furniture.description}</p>
+            <div className="buttons">
+                <button>Buy Now</button>
+                <button>Add to Cart</button>
+            </div>
             </div>
             </div>
         </div>
