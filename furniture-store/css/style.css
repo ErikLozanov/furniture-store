@@ -743,6 +743,28 @@ textarea {
 }
 
 
+.product-window {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+}
+
+.product-details {
+  display: flex;
+  gap: 50px;
+  background-color: #ffffff;
+  padding: 70px;
+  border: 2px solid white;
+  border-radius: 20px;
+}
+ 
+.product-details img{
+  width: 500px;
+}
+
+
+
 
 
 

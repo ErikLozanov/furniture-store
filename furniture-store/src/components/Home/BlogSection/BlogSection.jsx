@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 export const BlogSection = () => {
@@ -10,9 +11,9 @@ export const BlogSection = () => {
         <h2 className="section-title">Recent Blog</h2>
       </div>
       <div className="col-md-6 text-start text-md-end">
-        <a href="#" className="more">
+        <Link to="/blog" className="more">
           View All Posts
-        </a>
+        </Link>
       </div>
     </div>
     <div className="row">

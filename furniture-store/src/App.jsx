@@ -14,6 +14,7 @@ import { Cart } from "./components/Cart/Cart";
 import { AuthProvider } from "./contexts/AuthContext";
 import { useEffect, useState } from "react";
 import { furnitureServiceFactory } from "./services/furnitureService";
+import { Details } from "./components/Details/Details";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
     <Route path='/login' element={<Login/>}/>
     <Route path='/register' element={<Register/>}/>
     <Route path='/cart' element={<Cart/>}/>
+    <Route path ='/details/:furnitureId' element ={<Details/>}/>
     </Routes>
      <Footer />
     </AuthProvider>

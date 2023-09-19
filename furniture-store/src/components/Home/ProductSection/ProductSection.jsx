@@ -2,7 +2,6 @@ import { Link } from "react-router-dom"
 import { FurnitureTemplate } from "./FurnitureTemplate"
 
 export const ProductSection = ({furnitures}) => {
-
     let slicedFurnitures = furnitures.slice(5,9);
     return (
         <div className="product-section">

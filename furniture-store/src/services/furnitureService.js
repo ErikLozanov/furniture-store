@@ -14,7 +14,7 @@ export const furnitureServiceFactory = (token) => {
     };
 
     const getOne = async (furnitureId) => {
-        const result = await request.get(`${baseUrl}/${gameId}`);
+        const result = await request.get(`${baseUrl}/${furnitureId}`);
 
         return result;
     };
