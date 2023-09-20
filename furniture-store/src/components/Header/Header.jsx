@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthContext";
 
-export const Header = () => {
+export const Header = ({cartItems}) => {
     
 	const {onLogout, isAuthenticated, userEmail} = useAuthContext();
 
@@ -29,7 +29,7 @@ export const Header = () => {
 					</ul>
 
 					<ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><Link className="nav-link" to="/cart"><img src="images/cart.svg"/></Link></li>
+						<li><Link className="nav-link" to="/cart"><span className="added-items">{cartItems}</span><img src="images/cart.svg"/></Link></li>
 						{isAuthenticated ? (<div id="user">
 					    <li><Link className="nav-link" onClick={onLogout} to="#">Logout</Link></li>
 						</div>) : (<div id="guest">

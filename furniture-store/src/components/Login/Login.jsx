@@ -1,7 +1,7 @@
 import { useForm } from "../../hooks/useForm";
-import {auth} from '../../firebase-config';
 import {} from 'firebase/auth';
 import { useAuthContext } from "../../contexts/AuthContext";
+import { Link } from "react-router-dom";
 
 
 export const Login = () => {
@@ -67,9 +67,9 @@ export const Login = () => {
                 <div>
                   <p className="mb-0">
                     Don't have an account?{" "}
-                    <a href="#!" className="text-white-50 fw-bold">
+                    <Link to="/register" className="text-white-50 fw-bold">
                       Sign Up
-                    </a>
+                    </Link>
                   </p>
                 </div>
               </div>

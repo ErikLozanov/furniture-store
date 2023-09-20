@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useForm } from "../../hooks/useForm";
 
@@ -80,9 +81,9 @@ export const Register = () => {
                   <div>
                     <p className="mb-0">
                       Already have an account?{" "}
-                      <a href="#!" className="text-white-50 fw-bold">
+                      <Link to="/login" className="text-white-50 fw-bold">
                         Log in
-                      </a>
+                      </Link>
                     </p>
                   </div>
                 </div>

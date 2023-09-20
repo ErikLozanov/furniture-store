@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 export const Footer = () => {
@@ -27,24 +28,14 @@ export const Footer = () => {
         </p>
         <ul className="list-unstyled custom-social">
           <li>
-            <a href="#">
-              <span className="fa fa-brands fa-facebook-f" />
-            </a>
+            <Link to="https://github.com/ErikLozanov">
+              <span className="fa-brands fa-github" />
+            </Link>
           </li>
           <li>
-            <a href="#">
-              <span className="fa fa-brands fa-twitter" />
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span className="fa fa-brands fa-instagram" />
-            </a>
-          </li>
-          <li>
-            <a href="#">
+            <Link to="https://www.linkedin.com/in/erik-lozanov/">
               <span className="fa fa-brands fa-linkedin" />
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
@@ -53,16 +44,13 @@ export const Footer = () => {
           <div className="col-6 col-sm-6 col-md-3">
             <ul className="list-unstyled">
               <li>
-                <a href="#">About us</a>
+                <Link to="/about-us">About us</Link>
               </li>
               <li>
-                <a href="#">Services</a>
+                <Link to="/blog">Blog</Link>
               </li>
               <li>
-                <a href="#">Blog</a>
-              </li>
-              <li>
-                <a href="#">Contact us</a>
+                <Link to="contact-us">Contact us</Link>
               </li>
             </ul>
           </div>

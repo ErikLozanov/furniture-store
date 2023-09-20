@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { furnitureServiceFactory } from "../../services/furnitureService";
+import { addToCartServiceFactory } from "../../services/addToCartService";
 
 export const Details = () => {
     const [furniture,setFurniture] = useState({});
@@ -10,6 +11,12 @@ export const Details = () => {
         furnitureService.getOne(furnitureId)
         .then(res => setFurniture(res))
     },[furnitureId]);
+
+    const addToCartHandler = async () => {
+        const addToCartService = addToCartServiceFactory();
+
+        const result = await addToCartService.create({...furniture});
+    }
 
     return (
         <div className="product-window">
@@ -22,7 +29,7 @@ export const Details = () => {
             <p>{furniture.description}</p>
             <div className="buttons">
                 <button>Buy Now</button>
-                <button>Add to Cart</button>
+                <button onClick={addToCartHandler} >Add to Cart</button>
             </div>
             </div>
             </div>

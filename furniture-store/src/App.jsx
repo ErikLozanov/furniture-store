@@ -25,6 +25,8 @@ function App() {
   const furnitureService = furnitureServiceFactory();
   const [blogs,setBlogs] = useState([]);
   const blogService = blogServiceFactory();
+  const [cartItems,setCartItems] = useState(3);
+
 
   useEffect(()=> {
     blogService.getAll()
@@ -38,7 +40,7 @@ function App() {
 
   return (
     <AuthProvider>
-      <Header />
+      <Header cartItems={cartItems} />
     <Routes>
     <Route path='/' element={<Home furnitures={furnitures} blogs={blogs} />}/>
     <Route path='/shop' element={<Shop furnitures={furnitures}/>}/>

@@ -1002,3 +1002,18 @@ textarea {
     font-size: 1.1rem;
     line-height: 1.6;
 }
+
+
+/* Header Styles */
+
+.added-items {
+    border-radius: 100%;
+    padding: 3px 8px;
+    background-color: red;
+    color: black;
+    font-weight: bolder;
+    border: 1px solid red;
+    position: relative;
+    left: 40px;
+    bottom: 10px;
+}
