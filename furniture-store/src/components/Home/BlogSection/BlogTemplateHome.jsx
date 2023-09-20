@@ -1,11 +1,13 @@
+import { Link } from "react-router-dom";
+
 export const BlogTemplateHome = (blog) => {
 
     return (
       <div key={blog._id} className="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
       <div className="post-entry">
-        <a href="#" className="post-thumbnail">
+        <Link to={`/blog-details/${blog._id}`} className="post-thumbnail">
           <img src={blog.imgSrc} alt={blog.title} className="img-fluid" />
-        </a>
+        </Link>
         <div className="post-content-entry">
           <h3>
             <a href="#">{blog.title}</a>

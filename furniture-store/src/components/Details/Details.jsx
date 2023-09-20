@@ -11,7 +11,6 @@ export const Details = () => {
         .then(res => setFurniture(res))
     },[furnitureId]);
 
-    console.log(furniture);
     return (
         <div className="product-window">
             <div className="product-details">
