@@ -39,7 +39,7 @@ function App() {
     <AuthProvider>
       <Header />
     <Routes>
-    <Route path='/' element={<Home furnitures={furnitures} />}/>
+    <Route path='/' element={<Home furnitures={furnitures} blogs={blogs} />}/>
     <Route path='/shop' element={<Shop furnitures={furnitures}/>}/>
     <Route path='/about-us' element={<About/>}/>
     <Route path='/blog' element={<Blog blogs={blogs}/>}/>
