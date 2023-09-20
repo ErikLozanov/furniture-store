@@ -54,7 +54,7 @@ export const CartContainer = ({token,userId}) => {
                 <span className="text-black">Total</span>
               </div>
               <div className="col-md-6 text-right">
-                {/* <strong className="text-black">{`$${items.reduce((total, item)=>total+(Number(item.price)+Number(item.price)),0)}`}</strong> */}
+                <strong className="text-black">{`$${items.reduce((total, item)=>total+Number(item.price),0)}`}</strong>
               </div>
             </div>
             <div className="row">
