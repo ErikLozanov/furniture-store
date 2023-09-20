@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { addToCartServiceFactory } from "../../../services/addToCartService";
 import { CartTemplate } from "./CartTemplate";
 import { useAuthContext } from "../../../contexts/AuthContext";
+import { Link } from "react-router-dom";
 
 export const CartContainer = ({token,userId}) => {
 
@@ -27,7 +28,7 @@ export const CartContainer = ({token,userId}) => {
 
     return (
         <div className="untree_co-section before-footer-section">
-  <div className="container">
+          {items.length > 0 && <div className="container">
     <div className="row mb-5">
       <form className="col-md-12" method="post">
         <div className="site-blocks-table">
@@ -42,7 +43,7 @@ export const CartContainer = ({token,userId}) => {
               </tr>
             </thead>
             <tbody>
-        {items.length > 0 ? items.map(item => CartTemplate(item,removeItemHandler)) : <tr><td><h3 style={{width:"300px",textAlign:"center",marginTop:"60px"}}>The Cart Is Empty.</h3></td></tr>}
+        {items.length > 0 && items.map(item => CartTemplate(item,removeItemHandler))}
             </tbody>
           </table>
         </div>
@@ -78,7 +79,16 @@ export const CartContainer = ({token,userId}) => {
         </div>
       </div>
     </div>
-  </div>
+  </div>}
+      {items.length === 0 &&   <div className="empty-cart">
+  <div className="empty-cart-window">
+
+    <h1>Oops Your Cart is Empty !</h1>
+    <div className="click-here-div">
+      <Link to="/shop" className="click-here-button">Click here </Link>
+    </div>
+  <h4>to start shopping and add items to your cart.</h4></div>
+  </div>}
 </div>
 
     );
