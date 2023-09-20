@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { furnitureServiceFactory } from "../../services/furnitureService";
 import { addToCartServiceFactory } from "../../services/addToCartService";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export const Details = () => {
+    const {setCartItems,cartItems} = useAuthContext();
     const [furniture,setFurniture] = useState({});
     const {furnitureId} = useParams();
     const furnitureService = furnitureServiceFactory();
@@ -14,7 +16,7 @@ export const Details = () => {
 
     const addToCartHandler = async () => {
         const addToCartService = addToCartServiceFactory();
-
+        setCartItems(cartItems + 1);
         const result = await addToCartService.create({...furniture});
     }
 

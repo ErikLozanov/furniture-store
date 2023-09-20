@@ -1,10 +1,17 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthContext";
+import { addToCartServiceFactory } from "../../services/addToCartService";
 
-export const Header = ({cartItems}) => {
+export const Header = () => {
     
-	const {onLogout, isAuthenticated, userEmail} = useAuthContext();
+	const addToCartService = addToCartServiceFactory();
+	useEffect(() => {
+		addToCartService.getAll()
+		.then(res => setCartItems(res.length))
+	},[])
+
+	const {onLogout, isAuthenticated, userEmail, setCartItems, cartItems} = useAuthContext();
 
     return (
 
@@ -29,7 +36,7 @@ export const Header = ({cartItems}) => {
 					</ul>
 
 					<ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><Link className="nav-link" to="/cart"><span className="added-items">{cartItems}</span><img src="images/cart.svg"/></Link></li>
+						<li><Link className="nav-link" to="/cart">{cartItems > 0 ?<span className="added-items">{cartItems}</span> : null}<img src="images/cart.svg"/></Link></li>
 						{isAuthenticated ? (<div id="user">
 					    <li><Link className="nav-link" onClick={onLogout} to="#">Logout</Link></li>
 						</div>) : (<div id="guest">

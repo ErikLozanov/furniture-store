@@ -9,6 +9,9 @@ export const AuthContext = createContext();
 export const AuthProvider = ({
     children,
 }) => {
+
+    const [cartItems,setCartItems] = useState(0);
+
     const [auth, setAuth] = useLocalStorage('auth', {});
     const navigate = useNavigate();
 
@@ -49,6 +52,8 @@ export const AuthProvider = ({
         setAuth({});
     };
 
+    
+
     const contextValues = {
         onLoginSubmit,
         onRegisterSubmit,
@@ -57,6 +62,8 @@ export const AuthProvider = ({
         token: auth.accessToken,
         userEmail: auth.email,
         isAuthenticated: !!auth.accessToken,
+        setCartItems,
+        cartItems,
     };
 
     return (

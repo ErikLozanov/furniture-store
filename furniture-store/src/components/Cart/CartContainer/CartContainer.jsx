@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { addToCartServiceFactory } from "../../../services/addToCartService";
 import { CartTemplate } from "./CartTemplate";
+import { useAuthContext } from "../../../contexts/AuthContext";
 
 export const CartContainer = ({token,userId}) => {
 
       const [items,setItems] = useState([]);
       const addToCartService = addToCartServiceFactory();
+      const {setCartItems,cartItems} = useAuthContext();
 
       useEffect(() => {
         addToCartService.getAll()
@@ -13,7 +15,13 @@ export const CartContainer = ({token,userId}) => {
       },[]);
 
       const removeItemHandler = async (itemId) => {
-        await addToCartService.deleteItem(itemId)
+        try {
+          await addToCartService.deleteItem(itemId)
+          
+        } catch (error) {
+          alert(error.message);
+        }
+        setCartItems(cartItems -1);
         setItems(items.filter(item => item._id !== itemId));
       }
 
