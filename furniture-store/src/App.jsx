@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import { furnitureServiceFactory } from "./services/furnitureService";
 import { blogServiceFactory } from "./services/blogService";
 import { Details } from "./components/Details/Details";
+import { BlogDetails } from "./components/Blog/BlogDetails/BlogDetails";
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
     <Route path='/register' element={<Register/>}/>
     <Route path='/cart' element={<Cart/>}/>
     <Route path ='/details/:furnitureId' element ={<Details/>}/>
+    <Route path ='/blog-details/:blogId' element ={<BlogDetails/>}/>
     </Routes>
      <Footer />
     </AuthProvider>
