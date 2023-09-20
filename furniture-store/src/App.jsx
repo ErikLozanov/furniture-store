@@ -14,6 +14,7 @@ import { Cart } from "./components/Cart/Cart";
 import { AuthProvider } from "./contexts/AuthContext";
 import { useEffect, useState } from "react";
 import { furnitureServiceFactory } from "./services/furnitureService";
+import { blogServiceFactory } from "./services/blogService";
 import { Details } from "./components/Details/Details";
 
 
@@ -21,6 +22,13 @@ function App() {
 
   const [furnitures, setFurnitures] = useState([]);
   const furnitureService = furnitureServiceFactory();
+  const [blogs,setBlogs] = useState([]);
+  const blogService = blogServiceFactory();
+
+  useEffect(()=> {
+    blogService.getAll()
+    .then(result => {setBlogs(result)})
+  }, []);
 
   useEffect(() => {
     furnitureService.getAll()
@@ -34,7 +42,7 @@ function App() {
     <Route path='/' element={<Home furnitures={furnitures} />}/>
     <Route path='/shop' element={<Shop furnitures={furnitures}/>}/>
     <Route path='/about-us' element={<About/>}/>
-    <Route path='/blog' element={<Blog/>}/>
+    <Route path='/blog' element={<Blog blogs={blogs}/>}/>
     <Route path='/contact-us' element={<Contact/>}/>
     <Route path='/login' element={<Login/>}/>
     <Route path='/register' element={<Register/>}/>
