@@ -3,6 +3,7 @@ import { addToCartServiceFactory } from "../../../services/addToCartService";
 import { CartTemplate } from "./CartTemplate";
 import { useAuthContext } from "../../../contexts/AuthContext";
 import { Link } from "react-router-dom";
+import { useLocalStorage } from "../../../hooks/useLocalStorage";
 
 export const CartContainer = ({token,userId}) => {
 
@@ -10,18 +11,26 @@ export const CartContainer = ({token,userId}) => {
       const addToCartService = addToCartServiceFactory();
       const {setCartItems,cartItems, isAuthenticated} = useAuthContext();
 
-
       const removeItemHandler = async (itemId) => {
-        if(isAuthenticated) {
+        if (isAuthenticated) {
         try {
           await addToCartService.deleteItem(itemId)
           
         } catch (error) {
           alert(error.message);
         }
+      } else {
+        console.log(JSON.parse(localStorage.getItem('cart')).length === 1);
+
+        if(JSON.parse(localStorage.getItem('cart')).length === 1){
+          localStorage.clear('cart');
+        } else {
+          localStorage.setItem('cart', JSON.stringify(items));
+        }
       }
-        setCartItems(cartItems -1);
-        setItems(items.filter(item => item._id !== itemId));
+      setCartItems(cartItems -1);
+      let updatedItems = items.filter(item => item._id !== itemId)
+      setItems(updatedItems);
       }
 
       if(isAuthenticated) {
