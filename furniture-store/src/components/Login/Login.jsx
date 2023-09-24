@@ -33,6 +33,7 @@ export const Login = () => {
                     <input
                       type="email"
                       id="typeEmailX"
+                      required
                       className="form-control form-control-lg"
                       name="email"
                       value={values.email}
@@ -45,6 +46,7 @@ export const Login = () => {
                   <div className="form-outline form-white mb-4">
                     <input
                       type="password"
+                      required
                       id="typePasswordX"
                       className="form-control form-control-lg"
                       name="password"

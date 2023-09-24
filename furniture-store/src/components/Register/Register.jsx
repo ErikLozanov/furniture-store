@@ -36,6 +36,7 @@ export const Register = () => {
                         id="typeEmailX"
                         className="form-control form-control-lg"
                         name="email"
+                        required
                         value={values.email}
                         onChange={changeHandler}
                         />
@@ -49,6 +50,7 @@ export const Register = () => {
                         id="typePasswordX"
                         className="form-control form-control-lg"
                         name="password"
+                        required
                         value={values.password}
                         onChange={changeHandler}
                         />
@@ -62,6 +64,7 @@ export const Register = () => {
                         id="typeConfirmPasswordX"
                         className="form-control form-control-lg"
                         name="confirmPassword"
+                        required
                         value={values.confirmPassword}
                         onChange={changeHandler}
                         />
