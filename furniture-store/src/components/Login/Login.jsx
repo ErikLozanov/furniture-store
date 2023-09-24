@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export const Login = () => {
 
 
-      const {onLoginSubmit, successfulLogin} = useAuthContext();
+      const {onLoginSubmit, loginError} = useAuthContext();
       const { values, changeHandler , onSubmit} = useForm({
         email: '',
         password: '',
@@ -61,7 +61,7 @@ export const Login = () => {
                     >
                     Login
                   </button>
-                    {successfulLogin ? null : <p style={{color:"red"}}>Wrong email or password. Please try again!</p>}
+                    {loginError ? <p style={{color:"red"}}>{loginError}</p> : null}
                     </form>
                 </div>
                 <div>

@@ -10,7 +10,7 @@ export const AuthProvider = ({
     children,
 }) => {
     
-    const [successfulLogin, setSuccessfulLogin] = useState(true);
+    const [loginError, setLoginError] = useState('');
     const [registerError, setRegisterError] = useState('');
 
     const [cartItems,setCartItems] = useState(0);
@@ -22,21 +22,20 @@ export const AuthProvider = ({
 
     const onLoginSubmit = async (data) => {
 
-        if(data.email === '' || data.password === '') {
-            return false;
-        }
-
         try {
+            
+            if(data.email === '' || data.password === '') {
+                throw new Error('Please fill in all inputs!')
+            }
             const result = await authService.login(data);
 
+
             setAuth(result);
-            setSuccessfulLogin(true);
+            setLoginError('');
 
             navigate('/');
         } catch (error) {
-
-            setSuccessfulLogin(false);
-            console.log('There is a problem');
+            setLoginError(error.message);
         }
     };
 
@@ -86,7 +85,7 @@ export const AuthProvider = ({
         isAuthenticated: !!auth.accessToken,
         setCartItems,
         cartItems,
-        successfulLogin,
+        loginError,
         registerError,
     };
 
