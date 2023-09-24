@@ -7,11 +7,16 @@ import { Link } from "react-router-dom";
 export const Login = () => {
 
 
-      const {onLoginSubmit, loginError} = useAuthContext();
+
+      const {onLoginSubmit, loginError, setLoginError} = useAuthContext();
       const { values, changeHandler , onSubmit} = useForm({
         email: '',
         password: '',
       }, onLoginSubmit);
+
+      setTimeout(()=> {
+        setLoginError('')
+      },10000)
     return (
       <section className="vh-100 gradient-custom">
       <div className="container py-5 h-100">

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-export const CartTemplate = (item,removeItemHandler) => {
+export const CartTemplate = (item) => {
 
 
   return (

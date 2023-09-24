@@ -3,18 +3,27 @@ import { useParams } from "react-router-dom";
 import { furnitureServiceFactory } from "../../services/furnitureService";
 import { addToCartServiceFactory } from "../../services/addToCartService";
 import { useAuthContext } from "../../contexts/AuthContext";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 export const Details = () => {
-    const {setCartItems,cartItems} = useAuthContext();
+    const {setCartItems,cartItems, isAuthenticated} = useAuthContext();
     const [furniture,setFurniture] = useState({});
     const {furnitureId} = useParams();
     const furnitureService = furnitureServiceFactory();
+
+    const [unsignedCart, setUnsignedCard] = useLocalStorage('cart', []);
+
     useEffect(()=> {
         furnitureService.getOne(furnitureId)
         .then(res => setFurniture(res))
     },[furnitureId]);
 
     const addToCartHandler = async () => {
+        if(!isAuthenticated) {
+            setUnsignedCard([...unsignedCart, furniture]);
+            return;
+        }
+
         const addToCartService = addToCartServiceFactory();
         setCartItems(cartItems + 1);
         const result = await addToCartService.create({...furniture});
@@ -30,9 +39,9 @@ export const Details = () => {
             <h3>Price: ${furniture.price}</h3>
             <p>{furniture.description}</p>
             <div className="buttons">
-                <button>Buy Now</button>
-                <button onClick={addToCartHandler} >Add to Cart</button>
-            </div>
+            <button>Buy Now</button>
+            <button onClick={addToCartHandler} >Add to Cart</button>
+        </div>
             </div>
             </div>
         </div>

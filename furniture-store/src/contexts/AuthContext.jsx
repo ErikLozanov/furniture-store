@@ -23,10 +23,6 @@ export const AuthProvider = ({
     const onLoginSubmit = async (data) => {
 
         try {
-            
-            if(data.email === '' || data.password === '') {
-                throw new Error('Please fill in all inputs!')
-            }
             const result = await authService.login(data);
 
 
@@ -49,12 +45,6 @@ export const AuthProvider = ({
             if (confirmPassword !== registerData.password) {
                 throw new Error('Passwords do not match!')
             }
-    
-            if(confirmPassword === '' || registerData.password === '' || registerData.email === '') {
-                throw new Error('Please fill in all inputs!')
-            }
-
-
 
             setAuth(result);
             setRegisterError('');
@@ -87,6 +77,8 @@ export const AuthProvider = ({
         cartItems,
         loginError,
         registerError,
+        setLoginError,
+        setRegisterError,
     };
 
     return (

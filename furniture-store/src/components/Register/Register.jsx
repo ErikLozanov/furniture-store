@@ -6,13 +6,15 @@ import { useForm } from "../../hooks/useForm";
 
 export const Register = () => {
 
-  const {onRegisterSubmit,registerError} = useAuthContext();
+  const {onRegisterSubmit,registerError,setRegisterError} = useAuthContext();
   const { values, changeHandler , onSubmit} = useForm({
     email: '',
     password: '',
     confirmPassword: '',
   }, onRegisterSubmit);
-
+  setTimeout(()=> {
+    setRegisterError('')
+  },10000)
     return(
         <section className="vh-100 gradient-custom">
         <div className="container py-5 h-100">
@@ -74,7 +76,6 @@ export const Register = () => {
                     </div>
                     <button
                       className="btn btn-outline-light btn-lg px-5"
-                      type="submit"
                       >
                       Register
                     </button>

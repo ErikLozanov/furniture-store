@@ -36,7 +36,7 @@ export const Header = () => {
 					</ul>
 
 					<ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><Link className="nav-link" to="/cart">{cartItems > 0 ?<span className="added-items">{cartItems}</span> : null}<img src="images/cart.svg"/></Link></li>
+						<li><Link className="nav-link" to="/cart">{cartItems > 0 && isAuthenticated ?<span className="added-items">{cartItems}</span> : null}<img src="images/cart.svg"/></Link></li>
 						{isAuthenticated ? (<div id="user">
 					    <li><Link className="nav-link" onClick={onLogout} to="#">Logout</Link></li>
 						</div>) : (<div id="guest">

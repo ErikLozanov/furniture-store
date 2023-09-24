@@ -8,24 +8,34 @@ export const CartContainer = ({token,userId}) => {
 
       const [items,setItems] = useState([]);
       const addToCartService = addToCartServiceFactory();
-      const {setCartItems,cartItems} = useAuthContext();
+      const {setCartItems,cartItems, isAuthenticated} = useAuthContext();
 
-      useEffect(() => {
-        addToCartService.getAll()
-        .then(result => setItems(result.filter(item => item._ownerId === userId)))
-      },[]);
 
       const removeItemHandler = async (itemId) => {
+        if(isAuthenticated) {
         try {
           await addToCartService.deleteItem(itemId)
           
         } catch (error) {
           alert(error.message);
         }
+      }
         setCartItems(cartItems -1);
         setItems(items.filter(item => item._id !== itemId));
       }
 
+      if(isAuthenticated) {
+      useEffect(() => {
+        addToCartService.getAll()
+        .then(result => setItems(result.filter(item => item._ownerId === userId)))
+      },[]);
+    } else {
+      useEffect(() => {
+        localStorage.getItem('cart') ? setItems([...(JSON.parse(localStorage.getItem('cart')))])
+        :
+        setItems([])
+      }, []);
+    }
     return (
         <div className="untree_co-section before-footer-section">
           {items.length > 0 && <div className="container">
@@ -43,7 +53,7 @@ export const CartContainer = ({token,userId}) => {
               </tr>
             </thead>
             <tbody>
-        {items.length > 0 && items.map(item => CartTemplate(item,removeItemHandler))}
+        {items.length > 0 && items.map(item => CartTemplate(item, removeItemHandler))}
             </tbody>
           </table>
         </div>
