@@ -9,6 +9,8 @@ export const AuthContext = createContext();
 export const AuthProvider = ({
     children,
 }) => {
+    
+    const [successfulLogin, setSuccessfulLogin] = useState(true);
 
     const [cartItems,setCartItems] = useState(0);
 
@@ -22,9 +24,12 @@ export const AuthProvider = ({
             const result = await authService.login(data);
 
             setAuth(result);
+            setSuccessfulLogin(true);
 
             navigate('/');
         } catch (error) {
+            
+            setSuccessfulLogin(false);
             console.log('There is a problem');
         }
     };
@@ -39,9 +44,11 @@ export const AuthProvider = ({
             const result = await authService.register(registerData);
 
             setAuth(result);
+            setSuccessfulLogin(true);
 
             navigate('/');
         } catch (error) {
+            setSuccessfulLogin(false);
             console.log('There is a problem');
         }
     };
@@ -64,6 +71,7 @@ export const AuthProvider = ({
         isAuthenticated: !!auth.accessToken,
         setCartItems,
         cartItems,
+        successfulLogin,
     };
 
     return (

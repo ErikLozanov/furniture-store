@@ -7,12 +7,11 @@ import { Link } from "react-router-dom";
 export const Login = () => {
 
 
-      const {onLoginSubmit} = useAuthContext();
+      const {onLoginSubmit, successfulLogin} = useAuthContext();
       const { values, changeHandler , onSubmit} = useForm({
         email: '',
         password: '',
       }, onLoginSubmit);
-
     return (
       <section className="vh-100 gradient-custom">
       <div className="container py-5 h-100">
@@ -62,6 +61,7 @@ export const Login = () => {
                     >
                     Login
                   </button>
+                    {successfulLogin ? null : <p style={{color:"red"}}>Wrong email or password. Please try again!</p>}
                     </form>
                 </div>
                 <div>
