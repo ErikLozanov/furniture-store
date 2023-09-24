@@ -11,6 +11,7 @@ export const AuthProvider = ({
 }) => {
     
     const [successfulLogin, setSuccessfulLogin] = useState(true);
+    const [registerError, setRegisterError] = useState('');
 
     const [cartItems,setCartItems] = useState(0);
 
@@ -20,6 +21,11 @@ export const AuthProvider = ({
     const authService = authServiceFactory(auth.accessToken)
 
     const onLoginSubmit = async (data) => {
+
+        if(data.email === '' || data.password === '') {
+            return false;
+        }
+
         try {
             const result = await authService.login(data);
 
@@ -28,7 +34,7 @@ export const AuthProvider = ({
 
             navigate('/');
         } catch (error) {
-            
+
             setSuccessfulLogin(false);
             console.log('There is a problem');
         }
@@ -36,20 +42,29 @@ export const AuthProvider = ({
 
     const onRegisterSubmit = async (values) => {
         const { confirmPassword, ...registerData } = values;
-        if (confirmPassword !== registerData.password) {
-            return;
-        }
+
 
         try {
             const result = await authService.register(registerData);
 
+            if (confirmPassword !== registerData.password) {
+                throw new Error('Passwords do not match!')
+            }
+    
+            if(confirmPassword === '' || registerData.password === '' || registerData.email === '') {
+                throw new Error('Please fill in all inputs!')
+            }
+
+
+
             setAuth(result);
-            setSuccessfulLogin(true);
+            setRegisterError('');
 
             navigate('/');
         } catch (error) {
-            setSuccessfulLogin(false);
-            console.log('There is a problem');
+            setRegisterError(error.message);
+            console.log(registerError);
+            return;
         }
     };
 
@@ -72,6 +87,7 @@ export const AuthProvider = ({
         setCartItems,
         cartItems,
         successfulLogin,
+        registerError,
     };
 
     return (

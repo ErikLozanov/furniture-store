@@ -6,13 +6,12 @@ import { useForm } from "../../hooks/useForm";
 
 export const Register = () => {
 
-  const {onRegisterSubmit} = useAuthContext();
+  const {onRegisterSubmit,registerError} = useAuthContext();
   const { values, changeHandler , onSubmit} = useForm({
     email: '',
     password: '',
     confirmPassword: '',
   }, onRegisterSubmit);
-
 
     return(
         <section className="vh-100 gradient-custom">
@@ -76,6 +75,7 @@ export const Register = () => {
                       >
                       Register
                     </button>
+                    {registerError && (<p style={{color:"red"}}>{registerError}</p>)}
                       </form>
                   </div>
                   <div>
