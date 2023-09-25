@@ -20,8 +20,6 @@ export const CartContainer = ({token,userId}) => {
           alert(error.message);
         }
       } else {
-        console.log(JSON.parse(localStorage.getItem('cart')).length === 1);
-
         if(JSON.parse(localStorage.getItem('cart')).length === 1){
           localStorage.clear('cart');
         } else {

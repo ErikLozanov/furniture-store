@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
@@ -14,7 +14,9 @@ export const AuthProvider = ({
     const [registerError, setRegisterError] = useState('');
 
     const [cartItems,setCartItems] = useState(0);
-
+    useEffect(() => {
+        
+    }, [cartItems]);
     const [auth, setAuth] = useLocalStorage('auth', {});
     const navigate = useNavigate();
 

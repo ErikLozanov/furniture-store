@@ -11,7 +11,7 @@ export const Details = () => {
     const {furnitureId} = useParams();
     const furnitureService = furnitureServiceFactory();
 
-    const [unsignedCart, setUnsignedCard] = useLocalStorage('cart', []);
+    const [unsignedCart, setUnsignedCart] = useLocalStorage('cart', []);
 
     useEffect(()=> {
         furnitureService.getOne(furnitureId)
@@ -20,7 +20,8 @@ export const Details = () => {
 
     const addToCartHandler = async () => {
         if(!isAuthenticated) {
-            setUnsignedCard([...unsignedCart, furniture]);
+            setUnsignedCart([...unsignedCart, furniture]);
+            setCartItems(cartItems + 1);
             return;
         }
 

@@ -15,8 +15,10 @@ export const Header = () => {
 	},[])
     } else {
 		if(localStorage.getItem('cart')) {
-			console.log(JSON.parse(localStorage.getItem('cart')).length);
-			setCartItems(JSON.parse(localStorage.getItem('cart')).length) ;
+			useEffect(() => {
+				console.log('updated!');
+				setCartItems(JSON.parse(localStorage.getItem('cart')).length);
+			},[JSON.parse(localStorage.getItem('cart')).length])
 		}
 	}
 
