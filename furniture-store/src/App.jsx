@@ -17,6 +17,7 @@ import { furnitureServiceFactory } from "./services/furnitureService";
 import { blogServiceFactory } from "./services/blogService";
 import { Details } from "./components/Details/Details";
 import { BlogDetails } from "./components/Blog/BlogDetails/BlogDetails";
+import { Checkout } from "./components/Checkout/Checkout";
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
     <Route path='/cart' element={<Cart/>}/>
     <Route path ='/details/:furnitureId' element ={<Details/>}/>
     <Route path ='/blog-details/:blogId' element ={<BlogDetails/>}/>
+    <Route path ='/checkout' element={<Checkout />} />
     </Routes>
      <Footer />
     </AuthProvider>

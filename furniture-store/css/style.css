@@ -1058,3 +1058,18 @@ textarea {
     transition: 0.3s;
     background-color: rgb(59, 155, 59);
 }
+
+
+/* CHECKOUT WINDOW */
+.checkout-page {
+    padding: 60px;
+}
+
+.checkout-window {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}
+.checkout-form {
+    width: 600px;
+}

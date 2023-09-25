@@ -4,6 +4,7 @@ import { CartTemplate } from "./CartTemplate";
 import { useAuthContext } from "../../../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
+import {Checkout} from "../../Checkout/Checkout";
 
 export const CartContainer = ({token,userId}) => {
 
@@ -85,11 +86,11 @@ export const CartContainer = ({token,userId}) => {
             </div>
             <div className="row">
               <div className="col-md-12">
-                <button
+                <Link to="/checkout"
                   className="btn btn-black btn-lg py-3 btn-block"
                 >
                   Proceed To Checkout
-                </button>
+                </Link>
               </div>
             </div>
           </div>
