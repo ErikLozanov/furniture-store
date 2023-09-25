@@ -4,10 +4,9 @@ import { CartTemplate } from "./CartTemplate";
 import { useAuthContext } from "../../../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
-import {Checkout} from "../../Checkout/Checkout";
 
 export const CartContainer = ({token,userId}) => {
-
+    
       const [items,setItems] = useState([]);
       const addToCartService = addToCartServiceFactory();
       const {setCartItems,cartItems, isAuthenticated} = useAuthContext();

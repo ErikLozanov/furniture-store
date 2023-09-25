@@ -18,6 +18,7 @@ import { blogServiceFactory } from "./services/blogService";
 import { Details } from "./components/Details/Details";
 import { BlogDetails } from "./components/Blog/BlogDetails/BlogDetails";
 import { Checkout } from "./components/Checkout/Checkout";
+import { ThankYou } from "./components/ThankYou/ThankYou";
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
     <Route path ='/details/:furnitureId' element ={<Details/>}/>
     <Route path ='/blog-details/:blogId' element ={<BlogDetails/>}/>
     <Route path ='/checkout' element={<Checkout />} />
+    <Route path ='/thank-you' element={<ThankYou />} />
     </Routes>
      <Footer />
     </AuthProvider>

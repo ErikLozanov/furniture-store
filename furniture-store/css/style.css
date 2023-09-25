@@ -1063,6 +1063,7 @@ textarea {
 /* CHECKOUT WINDOW */
 .checkout-page {
     padding: 60px;
+    height: 100vh;
 }
 
 .checkout-window {
@@ -1072,4 +1073,28 @@ textarea {
 }
 .checkout-form {
     width: 600px;
+}
+
+.checkout-items{
+    background-color: ghostwhite;
+    padding: 30px;
+    border: 1px solid whitesmoke;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkout-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkout-item img {
+    width: 50px;
+}
+.item-info {
+    width: 150px;
 }

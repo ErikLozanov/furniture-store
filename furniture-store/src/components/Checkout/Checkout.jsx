@@ -1,9 +1,34 @@
-import { useAuthContext } from "../../contexts/AuthContext"
+import { Link } from "react-router-dom";
+import { useAuthContext } from "../../contexts/AuthContext";
+import { addToCartServiceFactory } from "../../services/addToCartService";
 import {CheckoutItemTemplate} from "./CheckoutItemTemplate";
+import {useState, useEffect} from 'react';
 
-export const Checkout = ({items,setItems}) => {
+export const Checkout = () => {
 
-    return(
+  const {token,userId} = useAuthContext();
+
+  const addToCartService = addToCartServiceFactory();
+  const [cartItems,setCartItems] = useState([]);
+  useEffect(() => {
+    addToCartService.getAll()
+    .then(result => setCartItems(result.filter(item => item._ownerId === userId)))
+  },[]);
+
+    console.log(cartItems);
+    return(<>
+      <div className="hero">
+      <div className="container">
+        <div className="row justify-content-between">
+          <div className="col-lg-5">
+            <div className="intro-excerpt">
+              <h1>Checkout</h1>
+            </div>
+          </div>
+          <div className="col-lg-7"></div>
+        </div>
+      </div>
+    </div>
         <div className="checkout-page">
             <div className="checkout-window">
             <form className="checkout-form">
@@ -33,9 +58,9 @@ export const Checkout = ({items,setItems}) => {
             </div>
             <div className="form-group mb-5">
               <label className="text-black" htmlFor="message">
-                Message
+                Address
               </label>
-              <textarea
+              <input
                 name=""
                 className="form-control"
                 id="message"
@@ -44,16 +69,17 @@ export const Checkout = ({items,setItems}) => {
                 defaultValue={""}
               />
             </div>
-            <button type="submit" className="btn btn-primary-hover-outline">
-              Send Message
-            </button>
+            <Link to="/thank-you" className="btn btn-primary-hover-outline">
+              PAY NOW
+            </Link>
           </form>
             <div className="checkout-items">
-              <h1>Cart Items</h1>
-                {items.map(item => CheckoutItemTemplate(item))}
+              <h1>{`Cart Items (${cartItems.length})`}</h1>
+                {cartItems.map(item => CheckoutItemTemplate(item))}
             </div>
             </div>
 
         </div>
+        </>
     )
 }
