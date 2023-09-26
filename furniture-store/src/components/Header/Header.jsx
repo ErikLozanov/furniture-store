@@ -6,13 +6,13 @@ import { addToCartServiceFactory } from "../../services/addToCartService";
 export const Header = () => {
     
 	const addToCartService = addToCartServiceFactory();
-	const {onLogout, isAuthenticated, userEmail, setCartItems, cartItems} = useAuthContext();
+	const {onLogout, isAuthenticated, userEmail, setCartItems, cartItems, userId} = useAuthContext();
 
 	if(isAuthenticated) {
-	useEffect(() => {
-		addToCartService.getAll()
-		.then(res => setCartItems(res.length))
-	},[])
+		useEffect(() => {
+			addToCartService.getAll()
+			.then(result => setCartItems(result.filter(item => item._ownerId === userId)))
+		  },[]);
     } else {
 		if(localStorage.getItem('cart')) {
 			useEffect(() => {
