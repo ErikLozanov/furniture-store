@@ -61,7 +61,7 @@ export const AuthProvider = ({
 
     const onLogout = async () => {
         await authService.logout();
-
+        setCartItems(0);
         setAuth({});
     };
 
