@@ -6,16 +6,34 @@ import {useState, useEffect} from 'react';
 
 export const Checkout = () => {
 
-  const {token,userId} = useAuthContext();
+  const {token,userId, isAuthenticated,setCartItems} = useAuthContext();
 
   const addToCartService = addToCartServiceFactory();
-  const [cartItems,setCartItems] = useState([]);
+  const [checkoutItems,setCheckoutItems] = useState([]);
+
+  if(isAuthenticated) {
   useEffect(() => {
     addToCartService.getAll()
-    .then(result => setCartItems(result.filter(item => item._ownerId === userId)))
+    .then(result => setCheckoutItems(result.filter(item => item._ownerId === userId)))
   },[]);
+    } else {
+      useEffect(() => {
+        localStorage.getItem('cart') ? setCheckoutItems([...(JSON.parse(localStorage.getItem('cart')))])
+        :
+        setCheckoutItems([])
+      }, []);
+    }
 
-    console.log(cartItems);
+
+    const checkoutHandler = () => {
+        if(isAuthenticated) {
+
+        } else {
+          localStorage.clear();
+        }
+        setCartItems(0);
+    }
+
     return(<>
       <div className="hero">
       <div className="container">
@@ -69,13 +87,13 @@ export const Checkout = () => {
                 defaultValue={""}
               />
             </div>
-            <Link to="/thank-you" className="btn btn-primary-hover-outline">
+            <Link onClick={checkoutHandler} to="/thank-you" className="btn btn-primary-hover-outline">
               PAY NOW
             </Link>
           </form>
             <div className="checkout-items">
-              <h1>{`Cart Items (${cartItems.length})`}</h1>
-                {cartItems.map(item => CheckoutItemTemplate(item))}
+              <h1>{`Cart Items (${checkoutItems.length})`}</h1>
+                {checkoutItems.map(item => CheckoutItemTemplate(item))}
             </div>
             </div>
 
