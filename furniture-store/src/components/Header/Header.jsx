@@ -8,12 +8,12 @@ export const Header = () => {
 	const addToCartService = addToCartServiceFactory();
 	const {onLogout, isAuthenticated, userEmail, setCartItems, cartItems, userId} = useAuthContext();
 
-	if(isAuthenticated) {
-		useEffect(() => {
-			addToCartService.getAll()
-			.then(result => setCartItems(result.filter(item => item._ownerId === userId)))
-		  },[]);
-    } else {
+	useEffect(() => {
+		addToCartService.getAll()
+		.then(result => setCartItems(result.filter(item => item._ownerId === userId).length))
+	  },[isAuthenticated]);
+	  
+	if(!isAuthenticated) {
 		if(localStorage.getItem('cart')) {
 			useEffect(() => {
 				console.log('updated!');
