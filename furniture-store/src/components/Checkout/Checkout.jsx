@@ -12,6 +12,7 @@ export const Checkout = () => {
   const [checkoutItems,setCheckoutItems] = useState([]);
 
   if(isAuthenticated) {
+    console.log('hi!');
   useEffect(() => {
     addToCartService.getAll()
     .then(result => setCheckoutItems(result.filter(item => item._ownerId === userId)))
@@ -25,9 +26,12 @@ export const Checkout = () => {
     }
 
 
-    const checkoutHandler = () => {
+    const checkoutHandler = async (e) => {
+      e.preventDefault();
         if(isAuthenticated) {
-
+          for(let item of checkoutItems) {
+            await  addToCartService.deleteItem(item._id)           
+          }
         } else {
           localStorage.clear();
         }
@@ -64,7 +68,7 @@ export const Checkout = () => {
                   <label className="text-black" htmlFor="lname">
                     Last name
                   </label>
-                  <input type="text" className="form-control" id="lname" />
+                  <input type="text" className="form-control" id="lname" required />
                 </div>
               </div>
             </div>
@@ -72,7 +76,7 @@ export const Checkout = () => {
               <label className="text-black" htmlFor="email">
                 Email address
               </label>
-              <input type="email" className="form-control" id="email" />
+              <input type="email" className="form-control" id="email" required />
             </div>
             <div className="form-group mb-5">
               <label className="text-black" htmlFor="message">
@@ -82,14 +86,10 @@ export const Checkout = () => {
                 name=""
                 className="form-control"
                 id="message"
-                cols={30}
-                rows={5}
-                defaultValue={""}
+                 required
               />
-            </div>
-            <Link onClick={checkoutHandler} to="/thank-you" className="btn btn-primary-hover-outline">
-              PAY NOW
-            </Link>
+            </div>     
+            <Link to="/thank-you" onClick={(e) =>checkoutHandler(e)}  className="btn btn-primary-hover-outline">PAY NOW</Link>
           </form>
             <div className="checkout-items">
               <h1>{`Cart Items (${checkoutItems.length})`}</h1>
