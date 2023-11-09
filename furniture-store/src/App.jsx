@@ -19,7 +19,6 @@ import { Details } from "./components/Details/Details";
 import { BlogDetails } from "./components/Blog/BlogDetails/BlogDetails";
 import { Checkout } from "./components/Checkout/Checkout";
 import { ThankYou } from "./components/ThankYou/ThankYou";
-import { ThankYou } from "./components/ThankYou/ThankYou";
 
 
 function App() {
