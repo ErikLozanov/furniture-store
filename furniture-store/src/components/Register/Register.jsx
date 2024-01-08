@@ -28,7 +28,7 @@ export const Register = () => {
                   <div className="mb-md-5 mt-md-4 pb-5">
                     <h2 className="fw-bold mb-2 text-uppercase">Register</h2>
                     <p className="text-white-50 mb-5">
-                      Sign up here!
+                      Sign up here.
                     </p>
                     <form onSubmit={onSubmit}>
 
